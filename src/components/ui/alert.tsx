@@ -1,25 +1,26 @@
-import { AlertTriangle } from "lucide-react";
-import { ComponentPropsWithoutRef } from "react";
+// alert.tsx
+   import { ComponentPropsWithoutRef } from 'react';
 
-interface AlertProps extends ComponentPropsWithoutRef<"div"> {
-  variant?: "default" | "destructive";
-}
+   export interface AlertProps extends ComponentPropsWithoutRef<'div'> {
+     variant?: 'default' | 'destructive';
+   }
 
-export const Alert = ({ variant = "default", className, ...props }: AlertProps) => (
-  <div
-    className={`p-4 rounded-lg ${
-      variant === "destructive" 
-        ? "bg-red-100 text-red-700" 
-        : "bg-blue-100 text-blue-700"
-    } ${className}`}
-    {...props}
-  />
-);
+   export const Alert = ({ variant = 'default', ...props }: AlertProps) => (
+     <div
+       role="alert"
+       className={`rounded-lg border p-4 ${
+         variant === 'destructive'
+           ? 'border-red-200 bg-red-100 text-red-700'
+           : 'border-blue-200 bg-blue-100 text-blue-700'
+       }`}
+       {...props}
+     />
+   );
 
-export const AlertTitle = ({ className, ...props }: ComponentPropsWithoutRef<"h3">) => (
-  <h3 className={`font-semibold mb-2 ${className}`} {...props} />
-);
+   export const AlertTitle = (props: ComponentPropsWithoutRef<'h3'>) => (
+     <h3 className="mb-1 font-medium leading-none tracking-tight" {...props} />
+   );
 
-export const AlertDescription = ({ className, ...props }: ComponentPropsWithoutRef<"p">) => (
-  <p className={`text-sm ${className}`} {...props} />
-);
+   export const AlertDescription = (props: ComponentPropsWithoutRef<'div'>) => (
+     <div className="text-sm [&_p]:leading-relaxed" {...props} />
+   );
