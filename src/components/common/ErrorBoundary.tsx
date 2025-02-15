@@ -1,4 +1,3 @@
-// src/components/common/ErrorBoundary.tsx
 import React from 'react';
 import { AlertTriangle } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '../ui/alert';
@@ -10,50 +9,28 @@ interface ErrorBoundaryProps {
 interface ErrorBoundaryState {
   hasError: boolean;
   error: Error | null;
-  errorInfo: React.ErrorInfo | null;
 }
 
 class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
-  constructor(props: ErrorBoundaryProps) {
-    super(props);
-    this.state = { 
-      hasError: false,
-      error: null,
-      errorInfo: null
-    };
-  }
+  state: ErrorBoundaryState = { hasError: false, error: null };
 
-  static getDerivedStateFromError(error: Error): Partial<ErrorBoundaryState> {
+  static getDerivedStateFromError(error: Error): ErrorBoundaryState {
     return { hasError: true, error };
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    this.setState({ errorInfo });
-    console.error('Error Boundary caught:', error, errorInfo);
+    console.error('Error:', error, errorInfo);
   }
 
   render() {
     if (this.state.hasError) {
       return (
-        <div className="p-4 max-w-2xl mx-auto">
+        <div className="p-4">
           <Alert variant="destructive">
             <AlertTriangle className="h-4 w-4" />
-            <AlertTitle className="mb-2">Application Error</AlertTitle>
+            <AlertTitle>Application Error</AlertTitle>
             <AlertDescription>
-              <div className="space-y-2">
-                <p>{this.state.error?.message || 'An unexpected error occurred.'}</p>
-                <details className="text-xs">
-                  <summary>Stack trace</summary>
-                  <pre className="whitespace-pre-wrap mt-2">
-                    {this.state.error?.stack}
-                  </pre>
-                  {this.state.errorInfo?.componentStack && (
-                    <pre className="whitespace-pre-wrap mt-2">
-                      {this.state.errorInfo.componentStack}
-                    </pre>
-                  )}
-                </details>
-              </div>
+              {this.state.error?.message || 'Something went wrong. Please refresh the page.'}
             </AlertDescription>
           </Alert>
         </div>
