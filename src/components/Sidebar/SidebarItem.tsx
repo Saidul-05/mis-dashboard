@@ -1,46 +1,32 @@
 import React from 'react';
-import { X, Menu } from 'lucide-react';
-import SidebarItem from './SidebarItem';
-import SidebarCategory from './SidebarCategory';
+import { ModuleName } from '@/types/types';
 
-interface SidebarProps {
-  isOpen: boolean;
-  setIsOpen: (open: boolean) => void;
-  activeModule: string;
-  setActiveModule: (module: string) => void;
+interface SidebarItemProps {
+  icon: React.ReactNode;
+  label: string;
+  active: boolean;
+  collapsed: boolean;
+  onClick: (module: ModuleName) => void;
+  module: ModuleName;
 }
 
-const Sidebar = ({ 
-  isOpen, 
-  setIsOpen,
-  activeModule,
-  setActiveModule
-}: SidebarProps) => {
-  return (
-    <div className={`${isOpen ? 'w-64' : 'w-20'} bg-white shadow-lg transition-all duration-300`}>
-      <div className="flex items-center justify-between p-4 border-b">
-        {isOpen && <h1 className="font-bold text-xl">MIS Dashboard</h1>}
-        <button 
-          onClick={() => setIsOpen(!isOpen)} 
-          className="p-2 rounded hover:bg-gray-100"
-        >
-          {isOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
-      </div>
-      
-      <nav className="p-4 space-y-2">
-        <SidebarCategory title="Core Features" collapsed={!isOpen}>
-          <SidebarItem
-            icon={<LayoutDashboard size={20} />}
-            label="Dashboard"
-            active={activeModule === 'dashboard'}
-            onClick={() => setActiveModule('dashboard')}
-            collapsed={!isOpen}
-          />
-        </SidebarCategory>
-      </nav>
-    </div>
-  );
-};
+const SidebarItem: React.FC<SidebarItemProps> = ({
+  icon,
+  label,
+  active,
+  collapsed,
+  onClick,
+  module
+}) => (
+  <button
+    onClick={() => onClick(module)}
+    className={`w-full flex items-center space-x-3 p-3 rounded-lg transition-colors ${
+      active ? 'bg-blue-50 text-blue-600' : 'hover:bg-gray-100'
+    }`}
+  >
+    <span className="shrink-0">{icon}</span>
+    {!collapsed && <span className="text-sm font-medium">{label}</span>}
+  </button>
+);
 
-export default Sidebar;
+export default SidebarItem;
