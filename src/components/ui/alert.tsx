@@ -4,11 +4,7 @@ export interface AlertProps extends ComponentPropsWithoutRef<'div'> {
   variant?: 'default' | 'destructive';
 }
 
-export const Alert = ({ 
-  variant = 'default', 
-  className,
-  ...props 
-}: AlertProps) => (
+export const Alert = ({ variant = 'default', className, ...props }: AlertProps) => (
   <div
     className={`p-4 rounded-lg border ${
       variant === 'destructive'
