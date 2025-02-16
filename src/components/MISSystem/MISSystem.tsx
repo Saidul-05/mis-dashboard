@@ -7,7 +7,7 @@ import {
   BarChart, PieChart, TrendingUp, Lock, UserPlus, BellRing
 } from 'lucide-react';
 import SidebarItem from '../Sidebar/SidebarItem'; // Fixed import
-import Header from '../Header/Header';
+import Header from '@/components/Header/Header';
 import DashboardModule from '../../modules/Dashboard/DashboardModule';
 import EmergencyModule from '../../modules/Emergency/EmergencyModule';
 
