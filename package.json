@@ -9,7 +9,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext ts,tsx --fix"
+    "lint": "eslint . --ext .ts,.tsx --fix"
   },
   "dependencies": {
     "react": "^18.2.0",
