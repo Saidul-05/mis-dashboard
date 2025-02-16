@@ -1,6 +1,5 @@
-// src/components/Sidebar/Sidebar.tsx
 import React from 'react';
-import { X, Menu } from 'lucide-react';
+import { X, Menu, LayoutDashboard, AlertTriangle } from 'lucide-react';
 import SidebarItem from './SidebarItem';
 import SidebarCategory from './SidebarCategory';
 
@@ -19,9 +18,32 @@ const Sidebar = ({
 }: SidebarProps) => {
   return (
     <div className={`${isOpen ? 'w-64' : 'w-20'} bg-white shadow-lg transition-all duration-300`}>
-      {/* Sidebar content */}
+      <div className="flex items-center justify-between p-4 border-b">
+        {isOpen && <h1 className="font-bold text-xl">MIS Dashboard</h1>}
+        <button onClick={() => setIsOpen(!isOpen)} className="p-2 rounded hover:bg-gray-100">
+          {isOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
+      </div>
+      <nav className="p-4 space-y-2">
+        <SidebarCategory title="Core Features" collapsed={!isOpen}>
+          <SidebarItem
+            icon={<LayoutDashboard size={20} />}
+            label="Dashboard"
+            active={activeModule === 'dashboard'}
+            onClick={() => setActiveModule('dashboard')}
+            collapsed={!isOpen}
+          />
+          <SidebarItem
+            icon={<AlertTriangle size={20} />}
+            label="Emergency"
+            active={activeModule === 'emergency'}
+            onClick={() => setActiveModule('emergency')}
+            collapsed={!isOpen}
+          />
+        </SidebarCategory>
+      </nav>
     </div>
   );
 };
 
-export default Sidebar; // Must have this line
+export default Sidebar;
