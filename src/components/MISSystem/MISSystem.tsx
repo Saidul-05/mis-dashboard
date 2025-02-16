@@ -6,7 +6,7 @@ import {
   AlertTriangle, Car, Tool, CreditCard, Map as MapIcon, Activity, Box,
   BarChart, PieChart, TrendingUp, Lock, UserPlus, BellRing
 } from 'lucide-react';
-import Sidebar from '../Sidebar/Sidebar';
+import SidebarItem from '../Sidebar/SidebarItem'; // Fixed import
 import Header from '../Header/Header';
 import DashboardModule from '../../modules/Dashboard/DashboardModule';
 import EmergencyModule from '../../modules/Emergency/EmergencyModule';
@@ -23,12 +23,14 @@ const MISSystem = () => {
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
-      <Sidebar 
-        isOpen={sidebarOpen} 
-        setIsOpen={setSidebarOpen}
-        activeModule={activeModule}
-        setActiveModule={setActiveModule}
-      />
+      <div className={`${sidebarOpen ? 'w-64' : 'w-16'} transition-width duration-300 bg-white shadow-lg`}>
+        <SidebarItem 
+          isOpen={sidebarOpen} 
+          setIsOpen={setSidebarOpen}
+          activeModule={activeModule}
+          setActiveModule={setActiveModule}
+        />
+      </div>
 
       {/* Main Content */}
       <div className="flex-1 overflow-auto">
@@ -44,4 +46,4 @@ const MISSystem = () => {
   );
 };
 
-export default MISSystem; // Important default export
+export default MISSystem;
