@@ -1,16 +1,4 @@
-# Default ignores
 node_modules/
 dist/
 .env
 .DS_Store
-.cache/
-*.log
-
-# Vite specific
-.temp/
-.cache/
-*.local
-
-# Editor directories
-.idea/
-.vscode/
