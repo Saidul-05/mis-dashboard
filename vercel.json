@@ -8,6 +8,5 @@
         "distDir": "dist"
       }
     }
-  ],
-  "nodeVersion": "18.x"
+  ]
 }
