@@ -7,7 +7,7 @@ export default defineConfig({
     outDir: 'dist',
     rollupOptions: {
       input: {
-        main: './public/index.html' // Exact path
+        main: './public/index.html'
       }
     }
   }
