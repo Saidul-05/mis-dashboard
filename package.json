@@ -17,20 +17,22 @@
     "react-router-dom": "^6.14.2",
     "recharts": "^2.7.2",
     "lucide-react": "^0.263.1",
-    "vite": "^4.4.5"
+    "vite": "^5.1.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
-    "@typescript-eslint/eslint-plugin": "^6.7.3",
-    "@typescript-eslint/parser": "^6.7.3",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
     "@vitejs/plugin-react": "^4.0.3",
     "autoprefixer": "^10.4.16",
-    "eslint": "^8.49.0",
+    "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.1",
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.3",
-    "typescript": "^5.0.2"
+    "typescript": "^5.0.2",
+    "glob": "^10.3.10",
+    "rimraf": "^5.0.5"
   }
 }
